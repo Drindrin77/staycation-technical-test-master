@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "staycation",
+            "username": "staycation",
+            "password": "password",
+            "name": "staycation"
+        }
+    ]
+}
