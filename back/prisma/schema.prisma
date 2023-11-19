@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Booking {
+  id     Int      @id @default(autoincrement())
+  date   DateTime
+  userId Int
+  roomId Int
+  user   User     @relation(fields: [userId], references: [id])
+  room   Room     @relation(fields: [roomId], references: [id])
+}
+
+model Hotel {
+  id        Int      @id @default(autoincrement())
+  name      String
+  stars     Int
+  preview   String
+  pictureId String
+  Review    Review[]
+  Room      Room[]
+}
+
+model Opening {
+  id            Int      @id @default(autoincrement())
+  saleId        Int
+  roomId        Int
+  date          DateTime
+  stock         Int
+  price         Float
+  discountPrice Float
+  room          Room     @relation(fields: [roomId], references: [id])
+  saleDate      SaleDate @relation(fields: [saleId], references: [id])
+}
+
+model Review {
+  id      Int   @id @default(autoincrement())
+  hotelId Int
+  userId  Int
+  score   Float
+  hotel   Hotel @relation(fields: [hotelId], references: [id])
+  user    User  @relation(fields: [userId], references: [id])
+}
+
+model Room {
+  id      Int       @id @default(autoincrement())
+  name    String
+  hotelId Int
+  hotel   Hotel     @relation(fields: [hotelId], references: [id])
+  Booking Booking[]
+  Opening Opening[]
+}
+
+model SaleDate {
+  id           Int        @id @default(autoincrement())
+  startDate    DateTime
+  endDate      DateTime
+  bookableDays DateTime[]
+  Opening      Opening[]
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  firstName String
+  Booking   Booking[]
+  Review    Review[]
+}
