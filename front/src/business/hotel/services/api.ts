@@ -1,32 +1,10 @@
-import { Hotel } from "../types";
-
-const hotels: Hotel[] = [
-  {
-    id: "1",
-    discount: 160,
-    imagePath: "/hotel-picture.png",
-    nbRate: 210,
-    preview: "Petit dej + champagne + cocktails inclus",
-    price: 211,
-    rate: 9.6,
-    stars: 4,
-    title: "Hôtel du Rond point des Champs Elysées",
-  },
-  {
-    id: "2",
-    discount: 160,
-    imagePath: "/hotel-picture.png",
-    nbRate: 210,
-    preview: "Petit dej + champagne + cocktails inclus",
-    price: 211,
-    rate: 9.6,
-    stars: 4,
-    title: "Hôtel du Rond point des Champs Elysées",
-  },
-];
-
+import api from "technical/api";
+import { BookHotel } from "../types";
 export module HotelApi {
   export const fetchHotels = async () => {
-    return hotels;
+    return api.get('/hotels')
+  };
+  export const book = async (bookingInfo: BookHotel) => {
+    return api.post('/booking', bookingInfo)
   };
 }

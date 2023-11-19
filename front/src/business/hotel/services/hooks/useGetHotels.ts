@@ -10,7 +10,7 @@ export const useGetHotels = () => {
 
   const getHotels = async () => {
     const hotels = await HotelApi.fetchHotels();
-    setHotels(hotels);
+    setHotels(hotels.data)
   };
 
   return {

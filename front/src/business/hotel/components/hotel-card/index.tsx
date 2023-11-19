@@ -10,6 +10,7 @@ import styles from "./index.module.scss";
 interface HotelCardProps {
   hotel: Hotel;
   onClick: () => void;
+  hover?: boolean;
 }
 
 const HotelCard: React.FC<HotelCardProps> = ({

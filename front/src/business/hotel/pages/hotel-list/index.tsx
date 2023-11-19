@@ -8,13 +8,13 @@ import HotelDetail from "../hotel-detail";
 
 interface HotelListProps {}
 
-const HotelList: React.FC<HotelListProps> = ({}) => {
+const HotelList: React.FC<HotelListProps> = () => {
   const { hotels } = useGetHotels();
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const onClickHotel = (id: string) => {
-    navigate(generatePath(Routes.HotelDetails, { id }));
+  const onClickHotel = (id: number) => {
+    navigate(generatePath(Routes.HotelDetails, { id: id.toString() }));
   };
 
   const onCloseHotel = () => {

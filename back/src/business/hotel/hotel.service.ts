@@ -5,7 +5,8 @@ import { HotelRepository } from './hotel.repository';
 export class HotelService {
   constructor(private hotelRepository: HotelRepository) {}
 
-  getHotels(date?: Date) {
+  getHotels() {
+    const currentDate = new Date();
     return this.hotelRepository.findMany({
       include: {
         Room: {
@@ -16,8 +17,11 @@ export class HotelService {
                   gt: 0,
                 },
                 saleDate: {
-                  bookableDays: {
-                    has: date,
+                  endDate: {
+                    lte: currentDate,
+                  },
+                  startDate: {
+                    gte: currentDate,
                   },
                 },
               },
