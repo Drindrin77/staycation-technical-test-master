@@ -1,23 +1,29 @@
 # Makefile
 
-.PHONY: build-client build-server up down
+.PHONY: build-front build-back start stop logs logs-back
 
-build-client:
-	@echo "Building client Docker image..."
-	docker build -t client-image ./client
+build-front:
+	@echo "Building front Docker image..."
+	docker build -t front-image ./front
 
-build-server:
-	@echo "Building server Docker image..."
-	docker build -t server-image ./server
+build-back:
+	@echo "Building back Docker image..."
+	docker build -t back-image ./back
 
-up:
+build:
+	@echo "Building Docker containers..."
+	docker-compose up --build
+
+start:
 	@echo "Starting Docker containers..."
-	docker-compose up --build -d
+	docker-compose up -d
 
-down:
+stop:
 	@echo "Stopping and removing Docker containers..."
 	docker-compose down
 
-
 logs:
 	docker-compose logs -f
+
+logs-back:
+	docker-compose logs -f back

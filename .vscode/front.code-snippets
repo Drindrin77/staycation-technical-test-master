@@ -1,0 +1,25 @@
+{
+	"Frontend Usefull Component snippet by Leanna": {
+		"prefix": "react",
+		"body": [
+			"import React from 'react';",
+			"",
+			"import styles from './index.module.scss';",
+			"",
+			"interface ${1:Name}Props {$2}",
+			"",
+			"const ${1:Name}: React.FC<${1:Name}Props> = ({$3}) => {",
+			"",
+			"  return (",
+			"    <div>",
+			"      ${1:Name}$0",
+			"    </div>",
+			"  );",
+			"};",
+			"",
+			"export default ${1:Name};",
+			""
+		],
+		"description": "Frontend Usefull Component snippet by Leanna"
+	}
+}

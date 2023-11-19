@@ -1,0 +1,28 @@
+@import 'ui/colors.scss';
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 24px;
+    border-bottom: 1px solid $gray-border;
+    background: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    z-index: 1000;
+
+    .logo {
+        width: 190px;
+        height: 20px;
+        color: $primary;
+    }
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+}
