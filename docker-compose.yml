@@ -10,6 +10,7 @@ services:
       - ./front:/app/front
     depends_on:
       - back
+
   back:
     build:
       context: ./back
@@ -21,6 +22,8 @@ services:
     volumes:
       - ./back:/app/back
       - /app/back/node_modules
+    restart: always
+
   database:
     image: postgres:latest
     environment:

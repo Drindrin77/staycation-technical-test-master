@@ -5,11 +5,30 @@ import { HotelRepository } from './hotel.repository';
 export class HotelService {
   constructor(private hotelRepository: HotelRepository) {}
 
-  getHotels() {
-    return this.hotelRepository.findMany({});
-  }
-
-  bookHotel(id: string) {
-    //TODO: verifier la disponibilité
+  getHotels(date?: Date) {
+    return this.hotelRepository.findMany({
+      include: {
+        Room: {
+          include: {
+            Opening: {
+              where: {
+                stock: {
+                  gt: 0,
+                },
+                saleDate: {
+                  bookableDays: {
+                    has: date,
+                  },
+                },
+              },
+              orderBy: {
+                discountPrice: 'asc',
+              },
+              take: 1,
+            },
+          },
+        },
+      },
+    });
   }
 }
