@@ -1,18 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { BookHotelDto } from './user.dto';
-import { HotelService } from './user.service';
+import { Controller, Get, Param } from '@nestjs/common';
+import { UserService } from './user.service';
 
-@Controller()
-export class HotelController {
-  constructor(private readonly hotelService: HotelService) {}
+@Controller('users')
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
-  @Get('/hotels')
-  getHotels() {
-    return this.hotelService.getHotels();
-  }
-
-  @Post('/hotels/booking')
-  bookHotel(@Body() bookHotelDto: BookHotelDto) {
-    return this.hotelService.bookHotel(bookHotelDto.id);
+  @Get('/user/:id')
+  findUser(@Param() params: { id: number }) {
+    return this.userService.getUser(params.id);
   }
 }

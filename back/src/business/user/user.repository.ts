@@ -3,10 +3,10 @@ import { Prisma } from '@prisma/client';
 import { PrismaService } from 'technical/prisma/prisma.service';
 
 @Injectable()
-export class HotelRepository {
+export class UserRepository {
   constructor(private prisma: PrismaService) {}
 
-  findMany(args: Prisma.HotelFindManyArgs) {
-    return this.prisma.hotel.findMany(args);
+  findUnique(args: Prisma.UserFindUniqueArgs) {
+    return this.prisma.user.findUnique(args);
   }
 }
