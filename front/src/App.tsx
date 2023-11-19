@@ -1,13 +1,13 @@
 import Content from "layout/content";
 import Header from "layout/header";
-import Home from "pages/home";
+import Router from "technical/router";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Content>
-        <Home />
+        <Router />
       </Content>
     </div>
   );

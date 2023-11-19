@@ -1,14 +1,46 @@
 {
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "driver": "PostgreSQL",
-            "database": "staycation",
-            "username": "staycation",
-            "password": "password",
-            "name": "staycation"
-        }
-    ]
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "breadcrumbs.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.workingDirectories": [
+    {
+      "directory": "./front",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./back/",
+      "changeProcessCWD": true
+    },
+  ],
+  "explorer.confirmDragAndDrop": false,
+  "javascript.format.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.validate.enable": false,
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "database": "staycation",
+      "username": "staycation",
+      "password": "password",
+      "name": "staycation"
+    }
+  ]
 }
