@@ -30,5 +30,3 @@ services:
       - TZ=GMT
     ports:
       - "5432:5432"
-    volumes:
-      - ./back/test-data.sql:/docker-entrypoint-initdb.d/init.sql

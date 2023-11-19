@@ -8,4 +8,8 @@ export class HotelService {
   getHotels() {
     return this.hotelRepository.findMany({});
   }
+
+  bookHotel(id: string) {
+    //TODO: verifier la disponibilité
+  }
 }
