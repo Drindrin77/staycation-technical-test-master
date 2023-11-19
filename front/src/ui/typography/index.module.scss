@@ -1,0 +1,164 @@
+@import 'ui/colors.module.scss';
+@import 'ui/size.module.scss';
+
+.text-align-center,
+div.text-align-center p {
+  text-align: center;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.weight-bold {
+  font-weight: bold;
+}
+
+.weight-semi-bold {
+  font-weight: 600;
+}
+
+.weight-normal {
+  font-weight: normal;
+}
+
+.soften {
+  font-weight: 300;
+}
+
+p.p {
+  margin-bottom: 0;
+  white-space: pre-line;
+
+  &.nowrap {
+    white-space: nowrap;
+  }
+
+  &.break-spaces {
+    white-space: break-spaces;
+  }
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  &.title {
+    &.nowrap {
+      white-space: nowrap;
+    }
+
+    &.break-spaces {
+      white-space: break-spaces;
+    }
+
+    &.pre-line {
+      white-space: pre-line;
+    }
+
+    &.uppercase {
+      text-transform: uppercase;
+    }
+  }
+}
+
+@include mobile {
+  h1.title {
+    font-size: $h1-font-size-mobile;
+  }
+
+  h2.title {
+    font-size: $h2-font-size-mobile;
+  }
+
+  h3.title {
+    font-size: $h3-font-size-mobile;
+  }
+
+  h4.title {
+    font-size: $h4-font-size-mobile;
+  }
+}
+
+.size-xs {
+  p {
+    font-size: $extra-small-font-size;
+
+    @include mobile {
+      font-size: $extra-small-mobile-font-size;
+    }
+  }
+
+  &.line-height-normal {
+    line-height: normal;
+  }
+}
+
+.size-xxs {
+  p {
+    font-size: $giga-small-font-size;
+
+    @include mobile {
+      font-size: $giga-small-mobile-font-size;
+    }
+  }
+
+  &.line-height-normal {
+    line-height: normal;
+  }
+}
+
+.size-s {
+  p {
+    font-size: $small-font-size;
+
+    @include mobile {
+      font-size: $small-mobile-font-size;
+    }
+  }
+
+  &.line-height-normal {
+    line-height: normal;
+  }
+}
+
+.size-m {
+  p {
+    font-size: $medium-font-size;
+
+    @include mobile {
+      font-size: $small-font-size;
+    }
+  }
+
+  &.line-height-normal {
+    line-height: normal;
+  }
+}
+
+.size-l {
+  p {
+    font-size: $large-font-size;
+  }
+
+  &.line-height-normal {
+    line-height: normal;
+  }
+}

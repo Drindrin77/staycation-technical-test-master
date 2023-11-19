@@ -1,0 +1,123 @@
+@import 'ui/size.module.scss';
+
+@mixin gap($margin, $mobileMargin) {
+  gap: $margin;
+
+  @include mobile {
+    gap: $mobileMargin;
+  }
+
+  @include tablet {
+    gap: $mobileMargin;
+  }
+
+  &>* {
+    margin: 0 !important;
+  }
+}
+
+.spaceContainer {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+
+  &.widthAuto {
+    width: auto;
+  }
+
+  &.grow {
+    flex-grow: 1;
+  }
+
+  &.justify-start {
+    justify-content: flex-start;
+  }
+
+  &.justify-end {
+    justify-content: flex-end;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-space-around {
+    justify-content: space-around;
+  }
+
+  &.justify-stretch {
+    justify-content: stretch;
+  }
+
+  &.justify-space-between {
+    justify-content: space-between;
+
+    &.vertical {
+      height: 100%;
+    }
+  }
+
+  &.align-start {
+    align-items: flex-start;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-end {
+    align-items: flex-end;
+  }
+
+  &.align-baseline {
+    align-items: baseline;
+  }
+
+  &.align-stretch {
+    align-items: stretch;
+  }
+
+  &.horizontal {
+    flex-direction: row;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  &.size-no-space {
+    @include gap(0, 0);
+  }
+
+  &.size-xs {
+    @include gap($xs-margin, $xs-margin-mobile);
+  }
+
+  &.size-s {
+    @include gap($s-margin, $s-margin-mobile);
+  }
+
+  &.size-m {
+    @include gap($m-margin, $m-margin-mobile);
+  }
+
+  &.size-l {
+    @include gap($l-margin, $l-margin-mobile);
+  }
+
+  &.size-xl {
+    @include gap($xl-margin, $xl-margin-mobile);
+  }
+
+  &.size-xxl {
+    @include gap($xxl-margin, $xxl-margin-mobile);
+  }
+
+  &.size-xxxl {
+    @include gap($xxxl-margin, $xxxl-margin-mobile);
+  }
+}

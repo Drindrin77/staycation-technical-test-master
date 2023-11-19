@@ -1,0 +1,67 @@
+$mobile-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1200px;
+
+$xs-margin: 4px;
+$s-margin: 8px;
+$m-margin: 16px;
+$l-margin: 32px;
+$xl-margin: 64px;
+$xxl-margin: 128px;
+$xxxl-margin: 256px;
+
+$xs-margin-mobile: 4px;
+$s-margin-mobile: 8px;
+$m-margin-mobile: 16px;
+$l-margin-mobile: 32px;
+$xl-margin-mobile: 48px;
+$xxl-margin-mobile: 64px;
+$xxxl-margin-mobile: 128px;
+
+
+// Title
+$h1-font-size: 60px;
+$h2-font-size: 40px;
+$h3-font-size: 32px;
+$h4-font-size: 24px;
+$h5-font-size: 16px;
+
+$h1-font-size-mobile: 32px;
+$h2-font-size-mobile: 20px;
+$h3-font-size-mobile: 16px;
+$h4-font-size-mobile: 14px;
+$h5-font-size-mobile: 10px;
+
+// Paragraph
+$giga-small-font-size: 12px;
+$giga-small-mobile-font-size: 10px;
+$extra-small-font-size: 14px;
+$extra-small-mobile-font-size: 12px;
+$small-font-size: 16px;
+$small-mobile-font-size: 14px;
+$medium-font-size: 18px;
+$large-font-size: 20px;
+$large-font-size-mobile: 16px;
+$big-number: 26px;
+
+
+//HEADER
+$header-height: 80px;
+
+@mixin mobile {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
