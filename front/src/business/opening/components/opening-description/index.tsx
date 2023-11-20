@@ -1,5 +1,5 @@
 import { Tag } from "antd";
-import { Hotel } from "business/hotel/types";
+import { Opening } from "business/opening/types";
 import React from "react";
 import { calculatePercentageDiscount } from "technical/pricing";
 import Flex from "ui/flex";
@@ -7,29 +7,25 @@ import StarRating from "ui/star-rating";
 import Typography from "ui/typography";
 import styles from "./index.module.scss";
 
-interface HotelCardProps {
-  hotel: Hotel;
-  onClick: () => void;
+interface OpeningDescriptionProps {
+  opening: Opening;
 }
 
-const HotelCard: React.FC<HotelCardProps> = ({
-  onClick,
-  hotel: {
-    picture_id,
-    name,
-    stars,
-    preview,
-    room: {
-      opening: { discount_price, price, stock },
+const OpeningDescription: React.FC<OpeningDescriptionProps> = ({
+  opening: {
+    discount_price,
+    price,
+    stock,
+    rooms: {
+      hotels: { name, picture_id, preview, reviews, stars },
     },
-    reviews,
   },
 }) => {
   const reviewsSum = reviews.reduce((acc, value) => acc + value.score, 0);
   const averageReviews = (reviewsSum / reviews.length).toFixed(1);
 
   return (
-    <div onClick={onClick} className={styles.container}>
+    <div className={styles.container}>
       <Flex direction="vertical" space="s" className={styles.subContainer}>
         <div className={styles.imageContainer}>
           <img src={picture_id} alt="hotelPicture" className={styles.image} />
@@ -67,4 +63,4 @@ const HotelCard: React.FC<HotelCardProps> = ({
   );
 };
 
-export default HotelCard;
+export default OpeningDescription;

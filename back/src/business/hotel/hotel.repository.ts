@@ -9,4 +9,24 @@ export class HotelRepository {
   findMany(args: Prisma.hotelsFindManyArgs) {
     return this.prisma.hotels.findMany(args);
   }
+
+  findFirst(args: Prisma.hotelsFindFirstArgs) {
+    return this.prisma.hotels.findFirst(args);
+  }
+
+  test(id: number) {
+    return this.prisma.openings.findFirst({
+      where: {
+        id,
+      },
+      include: {
+        rooms: {
+          include: {
+            hotels: true,
+          },
+        },
+        sale_dates: true,
+      },
+    });
+  }
 }

@@ -1,5 +1,3 @@
-
-
 export type Hotel = {
   id: number;
   name: string;
@@ -36,9 +34,3 @@ type SaleDate = {
   start_date: string;
   id: number;
 }
-
-export type BookHotel = {
-  userId: number;
-  openingId: number;
-  date: Date;
-};

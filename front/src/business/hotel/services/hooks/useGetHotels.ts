@@ -15,5 +15,6 @@ export const useGetHotels = () => {
 
   return {
     hotels,
+    refetch: getHotels
   };
 };

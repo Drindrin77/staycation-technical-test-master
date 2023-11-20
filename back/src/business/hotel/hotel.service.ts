@@ -5,6 +5,39 @@ import { HotelRepository } from './hotel.repository';
 export class HotelService {
   constructor(private hotelRepository: HotelRepository) {}
 
+  async getHotelByOpeningId(openingId: number) {
+    // return this.hotelRepository.test(openingId);
+    return this.hotelRepository.findFirst({
+      where: {
+        rooms: {
+          some: {
+            openings: {
+              some: {
+                id: openingId,
+              },
+            },
+          },
+        },
+      },
+      include: {
+        reviews: {
+          select: {
+            score: true,
+          },
+        },
+        rooms: {
+          include: {
+            openings: {
+              include: {
+                sale_dates: true,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   async getHotels() {
     const currentDate = new Date('2023-12-06');
     const hotelRepo: any[] = await this.hotelRepository.findMany({
@@ -29,9 +62,6 @@ export class HotelService {
                 stock: {
                   gt: 0,
                 },
-              },
-              include: {
-                sale_dates: true,
               },
               orderBy: {
                 discount_price: 'desc',

@@ -10,10 +10,10 @@ export class SaleDateService {
     return this.saleDateRepository.findFirst({
       where: {
         start_date: {
-          gte: currentDate,
+          lte: currentDate,
         },
         end_date: {
-          lte: currentDate,
+          gte: currentDate,
         },
       },
     });
