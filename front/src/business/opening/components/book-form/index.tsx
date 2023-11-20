@@ -9,11 +9,20 @@ interface BookFormProps {
 }
 
 const BookForm: React.FC<BookFormProps> = ({ bookableDays, onFinish }) => {
+  const [form] = Form.useForm<{ date: Date }>();
+
+  const selectedDate = Form.useWatch("date", form);
+
   return (
     <Flex>
       <Flex direction="vertical">
-        <Form onFinish={onFinish}>
-          <Form.Item name="date" required={true}>
+        <Form onFinish={onFinish} form={form}>
+          <Form.Item
+            name="date"
+            rules={[
+              { required: true, message: "Veuillez sélectionner une date" },
+            ]}
+          >
             <Radio.Group>
               {bookableDays.map((bookableDay) => {
                 return (
@@ -24,8 +33,8 @@ const BookForm: React.FC<BookFormProps> = ({ bookableDays, onFinish }) => {
               })}
             </Radio.Group>
           </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
+          <Form.Item shouldUpdate>
+            <Button type="primary" htmlType="submit" disabled={!selectedDate}>
               Book
             </Button>
           </Form.Item>
