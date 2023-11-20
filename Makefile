@@ -16,7 +16,9 @@ build:
 
 start:
 	@echo "Starting Docker containers..."
-	docker-compose up -d
+	docker-compose up postgres -d
+	docker-compose up back -d
+	docker-compose up front -d
 
 stop:
 	@echo "Stopping and removing Docker containers..."
