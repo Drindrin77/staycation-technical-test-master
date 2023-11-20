@@ -1,5 +1,6 @@
 import { Button, Form, Radio } from "antd";
 import React from "react";
+import { formatDate } from "technical/date";
 import Flex from "ui/flex";
 
 interface BookFormProps {
@@ -17,7 +18,7 @@ const BookForm: React.FC<BookFormProps> = ({ bookableDays, onFinish }) => {
               {bookableDays.map((bookableDay) => {
                 return (
                   <Radio value={bookableDay.toString()}>
-                    {bookableDay.toString()}
+                    {formatDate(new Date(bookableDay))}
                   </Radio>
                 );
               })}

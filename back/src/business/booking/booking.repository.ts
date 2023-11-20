@@ -12,6 +12,11 @@ export class BookingRepository {
         const opening = await tx.openings.findUnique({
           where: {
             id: openingId,
+            sale_dates: {
+              bookable_days: {
+                has: date,
+              },
+            },
           },
         });
 

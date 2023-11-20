@@ -22,8 +22,6 @@ const OpeningDetail: React.FC<OpeningDetailProps> = ({
   if (!opening) {
     return null;
   }
-  console.log(opening);
-
   const onBook = async ({ date }: { date: Date }) => {
     try {
       await bookOpening({

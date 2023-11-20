@@ -22,8 +22,8 @@ const HotelList: React.FC<HotelListProps> = () => {
   };
 
   const onBooked = () => {
-    refetch();
     closeModal();
+    refetch();
   };
 
   return (
