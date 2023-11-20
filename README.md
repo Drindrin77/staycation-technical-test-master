@@ -9,12 +9,7 @@ Remember that the goal is not necessarily to answer all the questions, but to go
 Improvisation is welcome, as long as it demonstrates your ability to build great apps with us!
 
 ## Launch the apps
-Before starting, check that you can run the following apps:
-
-- The PostgreSQL database using `docker-compose up -V`
-- The front app using `cd front; yarn start`
-- The backend of your choice in the `back` folder, referring to its launch instruction
-
+To launch the app, just run make start.
 ## Coding guidelines
 
 ### Do whatever you want with the code! 💪️

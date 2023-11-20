@@ -44,8 +44,7 @@ export class HotelService {
 
   async getHotels() {
     const saleDate = await this.saleDateService.getCurrentSaleDate();
-    console.log(saleDate);
-
+    //TODO: remove any
     const hotelRepo: any[] = await this.hotelRepository.findMany({
       include: {
         reviews: {
@@ -74,6 +73,7 @@ export class HotelService {
       },
     });
 
+    //TODO: refacto
     return hotelRepo.reduce((prev, cur) => {
       const filteredRooms = cur.rooms
         .filter((room: any) => !!room.openings.length)
