@@ -5,10 +5,10 @@ import { UserRepository } from './user.repository';
 export class UserService {
   constructor(private userRepository: UserRepository) {}
 
-  async getUser(id: number) {
+  async getUser() {
     return this.userRepository.findUnique({
       where: {
-        id,
+        id: 1,
       },
     });
   }

@@ -3,13 +3,17 @@ import StaycationLogo from "ui/staycation-logo";
 
 import styles from "./index.module.scss";
 
-interface HeaderProps {}
+interface HeaderProps {
+  first_name: string;
+}
 
-const Header: React.FC<HeaderProps> = ({}) => {
+const Header: React.FC<HeaderProps> = ({ first_name }) => {
   return (
     <div className={styles.header}>
-      <StaycationLogo className={styles.logo} />
-      <div className={styles.user}>Welcome, Camille</div>
+      <div className={styles.logo}>
+        <StaycationLogo />
+      </div>
+      <div className={styles.user}>Welcome, {first_name}</div>
     </div>
   );
 };

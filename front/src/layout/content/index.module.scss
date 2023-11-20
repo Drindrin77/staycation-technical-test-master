@@ -2,7 +2,7 @@
 @import 'ui/size.module.scss';
 
 .content {
-    margin-top: calc($header-height + $m-margin);
-    padding-left: $m-margin;
-    padding-right: $m-margin;
+    margin-top: calc($header-height + $l-margin);
+    padding-left: $global-margin-horizontal;
+    padding-right: $global-margin-horizontal;
 }

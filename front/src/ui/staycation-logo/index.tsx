@@ -1,5 +1,5 @@
 interface StaycationLogoProps {
-  className: string;
+  className?: string;
 }
 
 const StaycationLogo = ({ className }: StaycationLogoProps) => (
