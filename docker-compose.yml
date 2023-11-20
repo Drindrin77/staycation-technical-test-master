@@ -8,6 +8,7 @@ services:
       - "3000:3000"
     volumes:
       - ./front:/app/front
+      - /app/front/node_modules
     depends_on:
       - back
 
@@ -15,8 +16,6 @@ services:
     build:
       context: ./back
       dockerfile: Dockerfile
-    environment:
-      - PORT=3001
     ports:
       - "3001:3001"
     depends_on:
