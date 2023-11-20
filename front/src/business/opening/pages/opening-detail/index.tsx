@@ -20,7 +20,7 @@ const OpeningDetail: React.FC<OpeningDetailProps> = ({
   const { bookOpening } = useBookOpening();
 
   if (!opening) {
-    return null;
+    return <div>Hôtel po trouvé</div>;
   }
   const onBook = async ({ date }: { date: Date }) => {
     try {

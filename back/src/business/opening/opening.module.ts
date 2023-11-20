@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from 'technical/prisma/prisma.service';
+import { OrmService } from 'technical/orm/orm.service';
 import { OpeningController } from './opening.controller';
 import { OpeningRepository } from './opening.repository';
 import { OpeningService } from './opening.service';
 
 @Module({
-  providers: [PrismaService, OpeningRepository, OpeningService],
+  providers: [OrmService, OpeningRepository, OpeningService],
   controllers: [OpeningController],
-  exports: [OpeningRepository, OpeningService, PrismaService],
+  exports: [OpeningRepository, OpeningService, OrmService],
 })
 export class OpeningModule {}

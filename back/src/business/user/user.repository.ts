@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrismaService } from 'technical/prisma/prisma.service';
+import { OrmService } from 'technical/orm/orm.service';
 
 @Injectable()
 export class UserRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: OrmService) {}
 
   findUnique(args: Prisma.usersFindUniqueArgs) {
     return this.prisma.users.findUnique(args);

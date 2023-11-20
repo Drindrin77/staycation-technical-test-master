@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrismaService } from 'technical/prisma/prisma.service';
+import { OrmService } from 'technical/orm/orm.service';
 
 @Injectable()
 export class HotelRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: OrmService) {}
 
   findMany(args: Prisma.hotelsFindManyArgs) {
     return this.prisma.hotels.findMany(args);
@@ -12,21 +12,5 @@ export class HotelRepository {
 
   findFirst(args: Prisma.hotelsFindFirstArgs) {
     return this.prisma.hotels.findFirst(args);
-  }
-
-  test(id: number) {
-    return this.prisma.openings.findFirst({
-      where: {
-        id,
-      },
-      include: {
-        rooms: {
-          include: {
-            hotels: true,
-          },
-        },
-        sale_dates: true,
-      },
-    });
   }
 }

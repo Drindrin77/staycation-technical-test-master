@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { SaleDateService } from 'business/sale-date/sale-date.service';
 import { HotelRepository } from './hotel.repository';
 
 @Injectable()
 export class HotelService {
-  constructor(private hotelRepository: HotelRepository) {}
+  constructor(
+    private hotelRepository: HotelRepository,
+
+    private saleDateService: SaleDateService,
+  ) {}
 
   async getHotelByOpeningId(openingId: number) {
-    // return this.hotelRepository.test(openingId);
     return this.hotelRepository.findFirst({
       where: {
         rooms: {
@@ -39,7 +43,9 @@ export class HotelService {
   }
 
   async getHotels() {
-    const currentDate = new Date('2023-12-06');
+    const saleDate = await this.saleDateService.getCurrentSaleDate();
+    console.log(saleDate);
+
     const hotelRepo: any[] = await this.hotelRepository.findMany({
       include: {
         reviews: {
@@ -52,12 +58,7 @@ export class HotelService {
             openings: {
               where: {
                 sale_dates: {
-                  start_date: {
-                    lte: currentDate,
-                  },
-                  end_date: {
-                    gte: currentDate,
-                  },
+                  id: saleDate?.id,
                 },
                 stock: {
                   gt: 0,

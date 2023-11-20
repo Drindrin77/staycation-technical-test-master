@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from 'technical/prisma/prisma.service';
+import { SaleDateModule } from 'business/sale-date/sale-date.module';
+import { OrmService } from 'technical/orm/orm.service';
 import { HotelController } from './hotel.controller';
 import { HotelRepository } from './hotel.repository';
 import { HotelService } from './hotel.service';
 
 @Module({
-  providers: [PrismaService, HotelService, HotelRepository],
+  imports: [SaleDateModule],
+  providers: [OrmService, HotelService, HotelRepository],
   controllers: [HotelController],
-  exports: [HotelService, HotelRepository, PrismaService],
+  exports: [HotelService, HotelRepository, OrmService],
 })
 export class HotelModule {}

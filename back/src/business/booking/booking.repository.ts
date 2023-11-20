@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'technical/prisma/prisma.service';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { OrmService } from 'technical/orm/orm.service';
 import { BookHotelDto } from './booking.dto';
 
 @Injectable()
 export class BookingRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: OrmService) {}
 
   async bookRoom({ openingId, userId, date }: BookHotelDto) {
     try {
@@ -21,7 +21,7 @@ export class BookingRepository {
         });
 
         if (!opening || opening.stock <= 0) {
-          throw new Error('Opening not available for reservation');
+          throw new NotFoundException('Opening not available for reservation');
         }
 
         await tx.bookings.create({
