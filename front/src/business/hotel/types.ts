@@ -1,16 +1,41 @@
+
+
 export type Hotel = {
   id: number;
-  imagePath: string;
-  title: string;
-  stars: number;
-  nbRate: number;
-  rate: number;
+  name: string;
+  picture_id: string;
   preview: string;
-  discount: number;
+  room: Room;
+  stars: number;
+  reviews: {
+    score: number
+  }[]
+}
+
+type Room = {
+  hotel_id: number;
+  id: number;
+  name: string;
+  opening: Opening
+}
+
+type Opening = {
+  id: number;
+  date: string;
+  discount_price: number;
   price: number;
-  openingId: number;
-  bookableDays: Date[];
-};
+  room_id: number;
+  sale_dates: SaleDate
+  stock: number;
+  sale_id: number;
+}
+
+type SaleDate = {
+  bookable_days: Date[]
+  end_date: string;
+  start_date: string;
+  id: number;
+}
 
 export type BookHotel = {
   userId: number;

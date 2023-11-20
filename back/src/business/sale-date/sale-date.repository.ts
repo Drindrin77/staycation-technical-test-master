@@ -6,7 +6,7 @@ import { PrismaService } from 'technical/prisma/prisma.service';
 export class SaleDateRepository {
   constructor(private prisma: PrismaService) {}
 
-  findFirst(args: Prisma.SaleDateFindFirstArgs) {
-    return this.prisma.saleDate.findFirst(args);
+  findFirst(args: Prisma.sale_datesFindFirstArgs) {
+    return this.prisma.sale_dates.findFirst(args);
   }
 }

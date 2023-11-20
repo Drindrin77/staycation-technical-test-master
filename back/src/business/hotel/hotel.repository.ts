@@ -6,7 +6,7 @@ import { PrismaService } from 'technical/prisma/prisma.service';
 export class HotelRepository {
   constructor(private prisma: PrismaService) {}
 
-  findMany(args: Prisma.HotelFindManyArgs) {
-    return this.prisma.hotel.findMany(args);
+  findMany(args: Prisma.hotelsFindManyArgs) {
+    return this.prisma.hotels.findMany(args);
   }
 }

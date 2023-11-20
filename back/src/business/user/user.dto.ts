@@ -1,6 +1,6 @@
-import { IsUUID } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
-export class BookHotelDto {
-  @IsUUID()
-  id: string;
+export class UserDto {
+  @IsNumber()
+  id: number;
 }

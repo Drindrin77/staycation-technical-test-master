@@ -9,7 +9,7 @@ export class BookingRepository {
   async bookRoom({ openingId, userId, date }: BookHotelDto) {
     try {
       await this.prisma.$transaction(async (tx) => {
-        const opening = await tx.opening.findUnique({
+        const opening = await tx.openings.findUnique({
           where: {
             id: openingId,
           },
@@ -19,15 +19,15 @@ export class BookingRepository {
           throw new Error('Opening not available for reservation');
         }
 
-        await tx.booking.create({
+        await tx.bookings.create({
           data: {
-            userId,
-            roomId: opening.roomId,
+            user_id: userId,
+            room_id: opening.room_id,
             date,
           },
         });
 
-        await tx.opening.update({
+        await tx.openings.update({
           where: {
             id: opening.id,
           },

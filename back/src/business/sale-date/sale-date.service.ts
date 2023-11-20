@@ -9,10 +9,10 @@ export class SaleDateService {
     const currentDate = new Date();
     return this.saleDateRepository.findFirst({
       where: {
-        startDate: {
+        start_date: {
           gte: currentDate,
         },
-        endDate: {
+        end_date: {
           lte: currentDate,
         },
       },

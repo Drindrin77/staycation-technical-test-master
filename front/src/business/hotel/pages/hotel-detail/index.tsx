@@ -12,17 +12,15 @@ interface HotelDetailProps {
 const HotelDetail: React.FC<HotelDetailProps> = ({ id }) => {
   const { hotel } = useGetHotelDetails(id);
 
-  console.log(hotel);
   if (!hotel) {
     return null;
   }
-
   return (
     <Flex>
       <HotelCard hotel={hotel} onClick={() => {}} hover={false} />
       <Flex direction="vertical">
         <Form>
-          {hotel.bookableDays.map((bookableDay) => {
+          {hotel.room.opening.sale_dates.bookable_days.map((bookableDay) => {
             return (
               <Form.Item>
                 <Checkbox>

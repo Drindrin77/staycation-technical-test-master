@@ -6,7 +6,7 @@ import { PrismaService } from 'technical/prisma/prisma.service';
 export class UserRepository {
   constructor(private prisma: PrismaService) {}
 
-  findUnique(args: Prisma.UserFindUniqueArgs) {
-    return this.prisma.user.findUnique(args);
+  findUnique(args: Prisma.usersFindUniqueArgs) {
+    return this.prisma.users.findUnique(args);
   }
 }

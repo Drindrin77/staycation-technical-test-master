@@ -15,31 +15,42 @@ interface HotelCardProps {
 
 const HotelCard: React.FC<HotelCardProps> = ({
   onClick,
-  hotel: { imagePath, title, stars, nbRate, rate, preview, discount, price },
+  hotel: {
+    picture_id,
+    name,
+    stars,
+    preview,
+    room: {
+      opening: { discount_price, price, stock },
+    },
+    reviews,
+  },
 }) => {
+  const reviewsSum = reviews.reduce((acc, value) => acc + value.score, 0);
+  const averageReviews = (reviewsSum / reviews.length).toFixed(1);
+
   return (
     <div onClick={onClick} className={styles.container}>
       <Flex direction="vertical" space="s" className={styles.subContainer}>
         <div className={styles.imageContainer}>
-          <img src={imagePath} alt="hotelPicture" className={styles.image} />
+          <img src={picture_id} alt="hotelPicture" className={styles.image} />
         </div>
         <Flex direction="vertical" space="s">
           <Flex justify="space-between">
             <Flex space="no-space" style={{ flex: 1 }}>
-              <Typography.Title level={5}>{title}</Typography.Title>
+              <Typography.Title level={5}>{name}</Typography.Title>
               <StarRating stars={stars} />
             </Flex>
-            <Typography.Paragraph
-              size="xxs"
-              className={styles.rating}
-            >{`${rate} (${nbRate})`}</Typography.Paragraph>
+            <Typography.Paragraph size="xxs" className={styles.rating}>
+              {!!reviews.length && `${averageReviews} (${reviews.length})`}
+            </Typography.Paragraph>
           </Flex>
           <Typography.Paragraph size="xs">{preview}</Typography.Paragraph>
           <Flex space="xs">
             <Typography.Paragraph
               size="xs"
               weight="bold"
-            >{`${discount}€`}</Typography.Paragraph>
+            >{`${discount_price}€`}</Typography.Paragraph>
             <Typography.Paragraph
               size="xs"
               delete
@@ -47,8 +58,9 @@ const HotelCard: React.FC<HotelCardProps> = ({
             >{`${price}€`}</Typography.Paragraph>
             <Tag className={styles.tag}>{`-${calculatePercentageDiscount(
               price,
-              discount
+              discount_price
             )}%`}</Tag>
+            <Typography.Paragraph size="xxs">{`Plus que ${stock} en stock`}</Typography.Paragraph>
           </Flex>
         </Flex>
       </Flex>

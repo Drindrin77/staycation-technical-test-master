@@ -5,28 +5,36 @@ import { HotelRepository } from './hotel.repository';
 export class HotelService {
   constructor(private hotelRepository: HotelRepository) {}
 
-  getHotels() {
-    const currentDate = new Date();
-    return this.hotelRepository.findMany({
+  async getHotels() {
+    const currentDate = new Date('2023-12-06');
+    const hotelRepo: any[] = await this.hotelRepository.findMany({
       include: {
-        Room: {
+        reviews: {
+          select: {
+            score: true,
+          },
+        },
+        rooms: {
           include: {
-            Opening: {
+            openings: {
               where: {
-                stock: {
-                  gt: 0,
-                },
-                saleDate: {
-                  endDate: {
+                sale_dates: {
+                  start_date: {
                     lte: currentDate,
                   },
-                  startDate: {
+                  end_date: {
                     gte: currentDate,
                   },
                 },
+                stock: {
+                  gt: 0,
+                },
+              },
+              include: {
+                sale_dates: true,
               },
               orderBy: {
-                discountPrice: 'asc',
+                discount_price: 'desc',
               },
               take: 1,
             },
@@ -34,5 +42,29 @@ export class HotelService {
         },
       },
     });
+
+    return hotelRepo.reduce((prev, cur) => {
+      const filteredRooms = cur.rooms
+        .filter((room: any) => !!room.openings.length)
+        .sort((room1: any, room2: any) => {
+          return (
+            room1.openings[0].discount_price - room2.openings[0].discount_price
+          );
+        });
+
+      if (!!filteredRooms.length) {
+        const formattedRoom = {
+          ...cur,
+          room: {
+            ...filteredRooms[0],
+            opening: filteredRooms[0].openings[0],
+          },
+        };
+        delete formattedRoom.rooms;
+        delete formattedRoom.room.openings;
+        prev.push(formattedRoom);
+      }
+      return prev;
+    }, []);
   }
 }
