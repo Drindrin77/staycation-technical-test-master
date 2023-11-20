@@ -9,7 +9,7 @@ Remember that the goal is not necessarily to answer all the questions, but to go
 Improvisation is welcome, as long as it demonstrates your ability to build great apps with us!
 
 ## Launch the apps
-To launch the app, just run make start.
+To launch the app, just run make start and go to the website http://localhost:3000/
 ## Coding guidelines
 
 ### Do whatever you want with the code! 💪️
