@@ -1,19 +1,8 @@
 # Makefile
 
-.PHONY: build-front build-back start stop logs logs-back
+.PHONY: start stop logs logs-back
 
-build-front:
-	@echo "Building front Docker image..."
-	docker build -t front-image ./front
-
-build-back:
-	@echo "Building back Docker image..."
-	docker build -t back-image ./back
-
-build:
-	@echo "Building Docker containers..."
-	docker-compose up --build
-
+# TODO: to fix back is not waiting for postgres
 start:
 	@echo "Starting Docker containers..."
 	docker-compose up postgres -d
